@@ -2,6 +2,8 @@
 let currentHonk = 'honk1';
 let audio = null;
 let audioCache = {};
+let isPlaying = false;
+let currentPlayingAudio = null;
 
 // Initialize audio and set up event listeners
 function init() {
@@ -58,12 +60,26 @@ function loadHonk(honkName) {
 // Play the current honk
 function playHonk() {
     if (audio) {
-        // Stop and reset if already playing
-        audio.pause();
-        audio.currentTime = 0;
+        // Stop current playing sound if any
+        if (currentPlayingAudio) {
+            currentPlayingAudio.pause();
+            currentPlayingAudio.currentTime = 0;
+        }
         
-        // Play from start
-        audio.play();
+        // Clone for reliable iOS playback
+        const honkClone = audio.cloneNode();
+        currentPlayingAudio = honkClone;
+        
+        honkClone.play().catch(error => {
+            console.log('Play interrupted:', error);
+        });
+        
+        // Clean up reference when done
+        honkClone.addEventListener('ended', () => {
+            if (currentPlayingAudio === honkClone) {
+                currentPlayingAudio = null;
+            }
+        });
     }
 }
 
