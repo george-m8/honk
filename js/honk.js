@@ -1,11 +1,18 @@
 // Honk player functionality
 let currentHonk = 'honk1';
 let audio = null;
+let audioCache = {};
 
 // Initialize audio and set up event listeners
 function init() {
-    // Load honk1 by default
-    loadHonk('honk1');
+    // Preload all honk sounds
+    audioCache.honk1 = new Audio('sound/honk1.mp3');
+    audioCache.honk2 = new Audio('sound/honk2.mp3');
+    audioCache.honk3 = new Audio('sound/honk3.mp3');
+    
+    // Set honk1 as default
+    audio = audioCache.honk1;
+    updateDisplay();
     
     // Honk button click handler
     document.getElementById('honk-button').addEventListener('click', playHonk);
@@ -41,8 +48,8 @@ function loadHonk(honkName) {
         audio.currentTime = 0;
     }
     
-    // Create new audio instance
-    audio = new Audio(`sound/${honkName}.mp3`);
+    // Switch to preloaded audio
+    audio = audioCache[honkName];
     
     // Update display
     updateDisplay();
