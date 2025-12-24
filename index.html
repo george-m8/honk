@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>HONK</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="receipt-css/text.css">
+        <link rel="stylesheet" href="receipt-css/layout.css">
+        <link rel="stylesheet" href="receipt-css/inputs.css">
+
+        <script defer src="receipt-css/dropdown.js"></script>
+        <script defer src="js/honk.js"></script>
+    </head>
+    <body>
+        <div class="receipt-wrapper">
+            <div class="receipt-header">
+                <h1>HONK</h1>
+                <p class="small-text">honk yourself silly</p>
+            </div>
+            <div class="receipt-section" id="honk-section">
+                <div id="honk-section">
+                    <div class="section-title">━━━ HONK BUTTON ━━━</div>
+                    <p class="text-sm">press the button to honk</p>
+                    <button class="btn-box" id="honk-button">HONK</button>
+                </div>
+                <div>
+                    <button class="dropdown-toggle m-sm" data-dropdown="dropdown1">choose your honk ▾</button>
+                    <div id="dropdown1" class="dropdown-menu">
+                        <a href="#" class="dropdown-item" data-value="honk1">honk 1</a>
+                        <a href="#" class="dropdown-item" data-value="honk2">honk 2</a>
+                        <a href="#" class="dropdown-item" data-value="honk3">honk 3</a>
+                    </div>
+                    <p class="text-xs">(use dropdown or press 1, 2, or 3)</p>
+                    <p><strong>now playing: </strong><span id="output1" class="output">honk 1</span></p>
+
+                </div>
+            </div>
+            <div class="receipt-footer">
+                <p class="small-text">thank you for honking with us today</p>
+            </div>
+    </body>
+</html>
