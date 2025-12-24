@@ -1,0 +1,3 @@
+[submodule "receipt-css"]
+	path = receipt-css
+	url = https://github.com/george-m8/receipt-css.git
